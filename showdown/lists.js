@@ -54,7 +54,7 @@ function getData(nameOfFile)
 	$.ajax({
      async: false,
      type: 'GET',
-     url: 'http://shepherdnick.kissr.com/showdown/' + nameOfFile,
+     url: 'http://shepherdnick.github.io/showdown/' + nameOfFile,
      success: function(data) {
           markdownData = data;
 		}

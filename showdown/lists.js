@@ -51,10 +51,13 @@ function getData(nameOfFile)
 {
 	var markdownData = null;
 	
+	var url = "https://dl.dropboxusercontent.com/u/2013399/showdown/recipes.markdown";
+	//var url = "https://shepherdnick.github.io/showdown/" + nameOfFile;
+		
 	$.ajax({
      async: false,
      type: 'GET',
-     url: 'https://shepherdnick.github.io/showdown/' + nameOfFile,
+     url: url,
      success: function(data) {
           markdownData = data;
 		}

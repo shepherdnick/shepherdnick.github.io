@@ -6,24 +6,24 @@ function startGui(){
 	// html holding vars
 	var unplayedGames = null;
 	var unbeatenGames = null;
-	var beatenGames = null;
+	var completedGames = null;
 	var multiplayerGames = null;
 	
 	// create the html markdown, and then swap the () for spans
 	unplayedGames = spanIt(converter.makeHtml(getData("unplayed.markdown")));
 	unbeatenGames = spanIt(converter.makeHtml(getData("unbeaten.markdown")));
-	beatenGames = spanIt(converter.makeHtml(getData("beaten.markdown")));
+	completedGames = spanIt(converter.makeHtml(getData("completed.markdown")));
 	multiplayerGames = spanIt(converter.makeHtml(getData("multiplayer.markdown")));	
 	
 	// add the new html blocks to the DOM
 	$("#unplayed").html(unplayedGames);
 	$("#unbeaten").html(unbeatenGames);
-	$("#beaten").html(beatenGames);
+	$("#completed").html(completedGames);
 	$("#multiplayer").html(multiplayerGames);
 	
 	// add star ratings to the abandoned and the beaten lists
 	starIt("multiplayer");
-	starIt("beaten");
+	starIt("completed");
 	
 	// if we don't call the star-rating api after the html has changed, all we get is radio buttons - yeuch
 	$('input[type=radio].star').rating();

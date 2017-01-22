@@ -51,7 +51,7 @@ function getData(nameOfFile)
 {
 	var markdownData = null;
 	
-	var url = "https://dl.dropboxusercontent.com/u/2013399/showdown/recipes.markdown";
+	var url = "https://dl.dropboxusercontent.com/u/2013399/showdown/" + nameOfFile;
 	//var url = "https://shepherdnick.github.io/showdown/" + nameOfFile;
 		
 	$.ajax({

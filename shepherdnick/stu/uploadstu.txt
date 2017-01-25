@@ -1,6 +1,0 @@
-o ftp.tobeon.co.uk
-tobeon.co.uk
-upsilon_bravo0240
-cd htdocs
-send c:\docume~1\nick\mydocu~1\shephe~1\stu\stu.txt
-quit

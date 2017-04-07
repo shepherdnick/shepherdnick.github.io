@@ -8,7 +8,7 @@
 <script language="javascript" type="text/javascript">
 $(document).ready(function() {
 	// build request for response states for this event
-	var url = "http://api.openweathermap.org/data/2.5/weather?lat=51.6211110&lon=-3.93311003&appid=14a2b3f85f58c15880b8ebb42982b04f&callback=?";
+	var url = "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110/-3.93311003";
 
 	$.getJSON(url, function(data){
 		$("#divDataHolder").html(data);

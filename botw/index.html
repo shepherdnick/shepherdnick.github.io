@@ -3,20 +3,15 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-
+<div id="divDataHolder">
+</div>
 <script language="javascript" type="text/javascript">
 $(document).ready(function() {
 	// build request for response states for this event
-	var url = "http://api.openweathermap.org/data/2.5/weather?lat=51.6211110&lon=-3.93311003&appid=14a2b3f85f58c15880b8ebb42982b04f";
+	var url = "http://api.openweathermap.org/data/2.5/weather?lat=51.6211110&lon=-3.93311003&appid=14a2b3f85f58c15880b8ebb42982b04f&callback=?";
 
-	$.ajax({
-		async: false,
-		type: 'GET',
-		url: url,
-		dataType: 'jsonp',
-		success: function(data) {
-			markdownData = $.parseJSON(data);
-		}
+	$.getJSON(url, function(data){
+		$("#divDataHolder").html(data);
 	});
 });
 </script>

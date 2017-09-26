@@ -110,7 +110,7 @@ function getData(nameOfFile)
 {
 	var markdownData = null;
 	
-	var request = createCORSRequest( "get", "https://www.dropbox.com/s/rb6q39iwuoscnwa/unplayed.markdown?dl=1" );
+	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/rb6q39iwuoscnwa/unplayed.markdown?dl=1" );
 	if ( request ){
   		// Define a callback function
   		request.onload = function(){

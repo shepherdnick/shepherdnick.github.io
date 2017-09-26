@@ -4,10 +4,10 @@ function startGui(){
 	converter = new Showdown.converter();
 	
 	// Get all the data from dropbox
-	getData("unplayed.markdown");
-	getData("unbeaten.markdown");
-	getData("completed.markdown");
-	getData("multiplayer.markdown");
+	getData("rb6q39iwuoscnwa", "unplayed.markdown");
+	getData("5gnpuuzx3tupojm", "unbeaten.markdown");
+	getData("x960zbogwo10odp", "completed.markdown");
+	getData("z55s0jmyb7a2cfg", "multiplayer.markdown");
 	
 	// add star ratings to the abandoned and the beaten lists
 	starIt("multiplayer");
@@ -120,11 +120,11 @@ function createCORSRequest(method, url){
 	return xhr;
 }
 
-function getData(nameOfFile)
+function getData(shareId, nameOfFile)
 {
 	var markdownData = null;
 	
-	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/rb6q39iwuoscnwa/" + nameOfFile + "?dl=1" );
+	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/" + shareId + "/" + nameOfFile + "?dl=1" );
 	if ( request ){
   		// Define a callback function
   		request.onload = function(){

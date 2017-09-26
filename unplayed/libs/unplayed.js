@@ -3,23 +3,11 @@ function startGui(){
 	// make a new javascript markdown converter
 	converter = new Showdown.converter();
 	
-	// html holding vars
-	var unplayedGames = null;
-	var unbeatenGames = null;
-	var completedGames = null;
-	var multiplayerGames = null;
-	
-	// create the html markdown, and then swap the () for spans
-	unplayedGames = spanIt(converter.makeHtml(getData("unplayed.markdown")));
-	unbeatenGames = spanIt(converter.makeHtml(getData("unbeaten.markdown")));
-	completedGames = spanIt(converter.makeHtml(getData("completed.markdown")));
-	multiplayerGames = spanIt(converter.makeHtml(getData("multiplayer.markdown")));	
-	
-	// add the new html blocks to the DOM
-	$("#unplayed").html(unplayedGames);
-	$("#unbeaten").html(unbeatenGames);
-	$("#completed").html(completedGames);
-	$("#multiplayer").html(multiplayerGames);
+	// Get all the data from dropbox
+	getData("unplayed.markdown");
+	getData("unbeaten.markdown");
+	getData("completed.markdown");
+	getData("multiplayer.markdown");
 	
 	// add star ratings to the abandoned and the beaten lists
 	starIt("multiplayer");
@@ -94,13 +82,28 @@ function starIt(holdingId)
 
 function dataCalledBack(nameOfFile, data)
 {
-	//switch(nameOfFile)
-	//{
-		//case "unplayed.markdown":
-			unplayedGames = spanIt(converter.makeHtml(data));
+	switch(nameOfFile)
+	{	
+		case "unplayed.markdown":
+			var unplayedGames = spanIt(converter.makeHtml(data));
 			$("#unplayed").html(unplayedGames);
-			//break;
-	//}
+			break;
+		case "unbeaten.markdown":
+			var unbeatenGames = spanIt(converter.makeHtml(data));
+			$("#unbeaten").html(unbeatenGames);
+			break;
+		case "completed.markdown":
+			var completedGames = spanIt(converter.makeHtml(data));
+			$("#completed").html(completedGames);
+			break;
+		case "multiplayer.markdown:
+			var multiplayerGames = spanIt(converter.makeHtml(data));
+			$("#multiplayer").html(multiplayerGames);
+			break;
+		default:
+			alert("No data found!");
+			break;
+	}
 }
 
 function createCORSRequest(method, url){
@@ -131,17 +134,6 @@ function getData(nameOfFile)
   		// Send request
   		request.send();
 	}
-	
-	
-	// use jQuery ajax to get the markdown file
-	/*$.ajax({
-     async: false,
-     type: 'GET',
-     url: 'https://dl.dropboxusercontent.com/u/2013399/unplayed/' + nameOfFile,
-     success: function(data) {
-          markdownData = data;
-		}
-	});*/
 
 	return markdownData;
 }

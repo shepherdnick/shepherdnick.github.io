@@ -95,15 +95,20 @@ function dataCalledBack(nameOfFile, data)
 		case "completed.markdown":
 			var completedGames = spanIt(converter.makeHtml(data));
 			$("#completed").html(completedGames);
+			starIt("completed");
 			break;
 		case "multiplayer.markdown":
 			var multiplayerGames = spanIt(converter.makeHtml(data));
 			$("#multiplayer").html(multiplayerGames);
+			starIt("multiplayer");
 			break;
 		default:
 			alert("No data found!");
 			break;
 	}
+	
+	// if we don't call the star-rating api after the html has changed, all we get is radio buttons - yeuch
+	$('input[type=radio].star').rating();
 }
 
 function createCORSRequest(method, url){

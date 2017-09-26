@@ -92,9 +92,36 @@ function starIt(holdingId)
 	});
 }
 
+function createCORSRequest(method, url){
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr){
+    // XHR has 'withCredentials' property only if it supports CORS
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    xhr = null;
+  }
+  return xhr;
+}
+
+
+
 function getData(nameOfFile)
 {
 	var markdownData = null;
+	
+	var request = createCORSRequest( "get", "https://www.dropbox.com/s/rb6q39iwuoscnwa/unplayed.markdown?dl=1" );
+	if ( request ){
+  		// Define a callback function
+  		request.onload = function(data){
+  			alert(data);
+  		};
+  		// Send request
+  		request.send();
+	}
+	
 	
 	// use jQuery ajax to get the markdown file
 	$.ajax({

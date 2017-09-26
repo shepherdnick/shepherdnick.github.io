@@ -96,7 +96,7 @@ function dataCalledBack(nameOfFile, data)
 			var completedGames = spanIt(converter.makeHtml(data));
 			$("#completed").html(completedGames);
 			break;
-		case "multiplayer.markdown:
+		case "multiplayer.markdown":
 			var multiplayerGames = spanIt(converter.makeHtml(data));
 			$("#multiplayer").html(multiplayerGames);
 			break;

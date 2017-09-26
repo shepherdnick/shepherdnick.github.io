@@ -126,7 +126,7 @@ function getData(nameOfFile)
   		// Define a callback function
   		request.onload = function(){
   			//markdownData = data;
-  			dataCalledBack(nameOfFile, data);
+  			dataCalledBack(nameOfFile, request.responseText);
   		};
   		// Send request
   		request.send();

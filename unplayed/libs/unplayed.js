@@ -106,8 +106,6 @@ function createCORSRequest(method, url){
   return xhr;
 }
 
-
-
 function getData(nameOfFile)
 {
 	var markdownData = null;

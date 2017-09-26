@@ -94,13 +94,13 @@ function starIt(holdingId)
 
 function dataCalledBack(nameOfFile, data)
 {
-	switch(nameOfFile)
-	{
-		case "unplayed.markdown":
+	//switch(nameOfFile)
+	//{
+		//case "unplayed.markdown":
 			unplayedGames = spanIt(converter.makeHtml(data));
 			$("#unplayed").html(unplayedGames);
-			break;
-	}
+			//break;
+	//}
 }
 
 function createCORSRequest(method, url){

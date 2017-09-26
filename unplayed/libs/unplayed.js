@@ -110,11 +110,11 @@ function getData(nameOfFile)
 {
 	var markdownData = null;
 	
-	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/rb6q39iwuoscnwa/unplayed.markdown?dl=1" );
+	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/rb6q39iwuoscnwa/" + nameOfFile + "?dl=1" );
 	if ( request ){
   		// Define a callback function
   		request.onload = function(){
-  			console.log(request.responseText);
+  			markdownData = data;
   		};
   		// Send request
   		request.send();
@@ -122,14 +122,14 @@ function getData(nameOfFile)
 	
 	
 	// use jQuery ajax to get the markdown file
-	$.ajax({
+	/*$.ajax({
      async: false,
      type: 'GET',
      url: 'https://dl.dropboxusercontent.com/u/2013399/unplayed/' + nameOfFile,
      success: function(data) {
           markdownData = data;
 		}
-	});
+	});*/
 
 	return markdownData;
 }

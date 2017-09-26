@@ -92,18 +92,29 @@ function starIt(holdingId)
 	});
 }
 
+function dataCalledBack(nameOfFile, data)
+{
+	switch(nameOfFile)
+	{
+		case "unplayed.markdown":
+			unplayedGames = spanIt(converter.makeHtml(data));
+			$("#unplayed").html(unplayedGames);
+			break;
+	}
+}
+
 function createCORSRequest(method, url){
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr){
-    // XHR has 'withCredentials' property only if it supports CORS
-    xhr.open(method, url, true);
-  } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-  } else {
-    xhr = null;
-  }
-  return xhr;
+  	var xhr = new XMLHttpRequest();
+  	if ("withCredentials" in xhr){
+    	// XHR has 'withCredentials' property only if it supports CORS
+    	xhr.open(method, url, true);
+  	} else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+    	xhr = new XDomainRequest();
+    	xhr.open(method, url);
+  	} else {
+    	xhr = null;
+  	}
+  	return xhr;
 }
 
 function getData(nameOfFile)
@@ -114,7 +125,8 @@ function getData(nameOfFile)
 	if ( request ){
   		// Define a callback function
   		request.onload = function(){
-  			markdownData = data;
+  			//markdownData = data;
+  			dataCalledBack(nameOfFile, data);
   		};
   		// Send request
   		request.send();

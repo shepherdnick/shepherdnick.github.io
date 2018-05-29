@@ -38,7 +38,7 @@ $(document).ready(function() {
         url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110,-3.93311003",
         data: null
       }, function printResult(result) {
-        $("#divDataHolder").html(result);
+        $("#divDataHolder").html(JSON.parse(result));
       });
 });
 </script>

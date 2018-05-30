@@ -23,8 +23,8 @@ $(document).ready(function() {
 		x.open(options.method, cors_api_url + options.url);
 		x.onload = x.onerror = function() {
 			printResult(
-				options.method + ' ' + options.url + '\n' +
-				x.status + ' ' + x.statusText + '\n\n' +
+				//options.method + ' ' + options.url + '\n' +
+				//x.status + ' ' + x.statusText + '\n\n' +
 				(x.responseText || '')
 			);
 		};
@@ -41,8 +41,8 @@ $(document).ready(function() {
 			data: null
 		}, function printResult(result) {
 			$("#divDataHolder").html(result);
-		});
 	});
+});
 </script>
 </body>
 </html>

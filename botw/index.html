@@ -17,30 +17,31 @@ $(document).ready(function() {
 	});*/
 
 	var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-  function doCORSRequest(options, printResult) {
-    var x = new XMLHttpRequest();
-    x.open(options.method, cors_api_url + options.url);
-    x.onload = x.onerror = function() {
-      printResult(
-        options.method + ' ' + options.url + '\n' +
-        x.status + ' ' + x.statusText + '\n\n' +
-        (x.responseText || '')
-      );
-    };
-    if (/^POST/i.test(options.method)) {
-      x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    }
-    x.send(options.data);
-  }
+	function doCORSRequest(options, printResult) {
+		var x = new XMLHttpRequest();
+		x.open(options.method, cors_api_url + options.url);
+		x.onload = x.onerror = function() {
+			printResult(
+				options.method + ' ' + options.url + '\n' +
+				x.status + ' ' + x.statusText + '\n\n' +
+				(x.responseText || '')
+			);
+		};
+	
+		if (/^POST/i.test(options.method)) {
+			x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		}
+		x.send(options.data);
+	}
 
 	doCORSRequest({
-        method: this.id === 'post' ? 'POST' : 'GET',
-        url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110,-3.93311003",
-        data: null
-      }, function printResult(result) {
-        $("#divDataHolder").html(JSON.parse(result));
-      });
-});
+			method: this.id === 'post' ? 'POST' : 'GET',
+			url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110,-3.93311003",
+			data: null
+		}, function printResult(result) {
+			$("#divDataHolder").html(result);
+		});
+	});
 </script>
 </body>
 </html>

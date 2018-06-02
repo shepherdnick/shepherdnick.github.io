@@ -76,25 +76,27 @@ $(document).ready(function() {
 		x.send(options.data);
 	}
 
-	doCORSRequest({
-			method: this.id === 'post' ? 'POST' : 'GET',
-			url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110,-3.93311003",
-			data: null
-		}, function printResult(result) {
-			var weatherData = JSON.parse(result);
+	function makeWeatherRequest(longitude, latitude) {
+		doCORSRequest({
+				method: this.id === 'post' ? 'POST' : 'GET',
+				url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/" + longitude + "," + latitude,
+				data: null
+			}, function printResult(result) {
+				var weatherData = JSON.parse(result);
 
-			// Get the next hour icon and summary
-			$("#imgNextHour").attr("src", getIcon(weatherData.hourly.data[0].icon));
-			$("#spnNextHour").html(weatherData.hourly.data[0].summary);
+				// Get the next hour icon and summary
+				$("#imgNextHour").attr("src", getIcon(weatherData.hourly.data[0].icon));
+				$("#spnNextHour").html(weatherData.hourly.data[0].summary);
 
-			// Get now + 1 icon and summary
-			$("#imgNextHourPlus1").attr("src", getIcon(weatherData.hourly.data[1].icon));
-			$("#spnNextHourPlus1").html(weatherData.hourly.data[1].summary);
+				// Get now + 1 icon and summary
+				$("#imgNextHourPlus1").attr("src", getIcon(weatherData.hourly.data[1].icon));
+				$("#spnNextHourPlus1").html(weatherData.hourly.data[1].summary);
 
-			// Get now + 2 icon and summary
-			$("#imgNextHourPlus2").attr("src", getIcon(weatherData.hourly.data[2].icon));
-			$("#spnNextHourPlus2").html(weatherData.hourly.data[2].summary);
-	});
+				// Get now + 2 icon and summary
+				$("#imgNextHourPlus2").attr("src", getIcon(weatherData.hourly.data[2].icon));
+				$("#spnNextHourPlus2").html(weatherData.hourly.data[2].summary);
+		});
+	}
 
 	function getIcon(iconName)
 	{
@@ -137,6 +139,20 @@ $(document).ready(function() {
 				break;
 		}
 	}
+
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(showPosition);
+	    } else {
+	        alert("Geolocation is not supported by this browser.");
+	    }
+	}
+
+	function showPosition(position) {
+	    makeWeatherRequest(position.coords.latitude, position.coords.longitude);
+	}
+
+	getLocation();
 });
 </script>
 </body>

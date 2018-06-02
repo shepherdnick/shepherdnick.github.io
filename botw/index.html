@@ -2,10 +2,51 @@
 <head>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js'></script>
-        <script type='text/javascript' src='angular-dark-sky.js'></script>
+  <script type='text/javascript' src='angular-dark-sky.js'></script>
+	<style>
+	.divWeatherHolder {
+		padding-left: 200px;
+		padding-top: 100px;
+	}
+	#divNextHour {
+		width: 320px;
+	}
+	#imgNextHour {
+		width: 300px;
+		height: 300px;
+	}
+	div.item {
+		position: relative;
+		vertical-align: middle;
+		display: inline-block;
+		text-align: center;
+		width: 220px;
+	}
+	img {
+		width: 200px;
+		height: 200px;
+		/*background-color: grey;*/
+	}
+	.caption {
+		display: block;
+	}
+	</style>
 </head>
 <body>
-<img src="climacons-master/SVG/Cloud.svg" />
+	<div id="divWeatherHolder" class="divWeatherHolder">
+	<div id="divNextHour" class="item">
+		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHour"/>
+		<span id="spnNextHour" class="caption"></span>
+	</div>
+	<div id="divNextHourPlus1" class="item">
+		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus1"/>
+		<span id="spnNextHourPlus1" class="caption"></span>
+	</div>
+	<div id="divNextHourPlus2" class="item">
+		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus2"/>
+		<span id="spnNextHourPlus2" class="caption"></span>
+	</div>
+</div>
 <div id="divDataHolder">
 </div>
 <script language="javascript" type="text/javascript">
@@ -28,7 +69,7 @@ $(document).ready(function() {
 				(x.responseText || '')
 			);
 		};
-	
+
 		if (/^POST/i.test(options.method)) {
 			x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		}
@@ -40,8 +81,62 @@ $(document).ready(function() {
 			url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/51.6211110,-3.93311003",
 			data: null
 		}, function printResult(result) {
-			$("#divDataHolder").html(result);
+			var weatherData = JSON.parse(result);
+
+			// Get the next hour icon and summary
+			$("#imgNextHour").attr("src", getIcon(weatherData.hourly.data[0].icon));
+			$("#spnNextHour").html(weatherData.hourly.data[0].summary);
+
+			// Get now + 1 icon and summary
+			$("#imgNextHourPlus1").attr("src", getIcon(weatherData.hourly.data[1].icon));
+			$("#spnNextHourPlus1").html(weatherData.hourly.data[1].summary);
+
+			// Get now + 2 icon and summary
+			$("#imgNextHourPlus2").attr("src", getIcon(weatherData.hourly.data[2].icon));
+			$("#spnNextHourPlus2").html(weatherData.hourly.data[2].summary);
 	});
+
+	function getIcon(iconName)
+	{
+		var pathBase = "climacons-master/SVG/";
+		//clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+		switch(iconName)
+		{
+			case "clear-day":
+				return pathBase + "Sun.svg";
+				break;
+			case "clear-night":
+				return pathBase + "Moon.svg";
+				break;
+			case "rain":
+				return pathBase + "Cloud-Rain.svg";
+				break;
+			case "snow":
+				return pathBase + "Cloud-Snow.svg";
+				break;
+			case "sleet":
+				return pathBase + "Cloud-Drizzle.svg";
+				break;
+			case "wind":
+				return pathBase + "Cloud-Wind.svg";
+				break;
+			case "fog":
+				return pathBase + "Cloud-Fog.svg";
+				break;
+			case "cloudy":
+				return pathBase + "Cloud.svg";
+				break;
+			case "partly-cloudy-day":
+				return pathBase + "Cloud-Sun.svg";
+				break;
+			case "partly-cloudy-night":
+				return pathBase + "Sun.svg";
+				break;
+			default:
+				return pathBase + "Cloud-Refresh.svg";
+				break;
+		}
+	}
 });
 </script>
 </body>

@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<style>
 	body{
 		font-family: 'Libre Franklin', sans-serif;
@@ -29,8 +29,6 @@
 		background-color: light-grey;
 	}
 	div.item {
-		position: relative;
-		vertical-align: middle;
 		display: inline-block;
 		text-align: center;
 		width: 220px;
@@ -46,19 +44,21 @@
 	</style>
 </head>
 <body>
-	<div id="divWeatherHolder" class="divWeatherHolder">
-	<div id="divNextHour" class="item">
+	<div id="divWeatherHolder" class="container">
+		<div class="row">
+	<div id="divNextHour" class="item col-lg">
 		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHour"/>
 		<span id="spnNextHour" class="caption"></span>
 	</div>
-	<div id="divNextHourPlus1" class="item">
+	<div id="divNextHourPlus1" class="item col-md align-middle">
 		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus1"/>
 		<span id="spnNextHourPlus1" class="caption"></span>
 	</div>
-	<div id="divNextHourPlus2" class="item">
+	<div id="divNextHourPlus2" class="item col-md align-middle">
 		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus2"/>
 		<span id="spnNextHourPlus2" class="caption"></span>
 	</div>
+</div>
 </div>
 <div id="divDataHolder">
 </div>

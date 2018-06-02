@@ -14,13 +14,13 @@
 		font-size:13pt;
 		line-height:150%;
 	}
-	.divWeatherHolder {
+	/*.divWeatherHolder {
 		padding-left: 200px;
 		padding-top: 100px;
-	}
-	#divNextHour {
+	}*/
+	/*#divNextHour {
 		width: 320px;
-	}
+	}*/
 	#imgNextHour {
 		width: 300px;
 		height: 300px;
@@ -29,14 +29,13 @@
 		background-color: light-grey;
 	}
 	div.item {
-		display: inline-block;
+		/*display: inline-block;*/
 		text-align: center;
-		width: 220px;
+		/*width: 220px;*/
 	}
 	img {
 		width: 200px;
 		height: 200px;
-		/*background-color: grey;*/
 	}
 	.caption {
 		display: block;
@@ -46,20 +45,20 @@
 <body>
 	<div id="divWeatherHolder" class="container">
 		<div class="row">
-	<div id="divNextHour" class="item col-lg">
-		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHour"/>
-		<span id="spnNextHour" class="caption"></span>
+			<div id="divNextHour" class="item col-sm-6">
+				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHour"/>
+				<span id="spnNextHour" class="caption"></span>
+			</div>
+			<div id="divNextHourPlus1" class="item col-sm-3 align-middle">
+				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus1"/>
+				<span id="spnNextHourPlus1" class="caption"></span>
+			</div>
+			<div id="divNextHourPlus2" class="item col-sm-3 align-middle">
+				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus2"/>
+				<span id="spnNextHourPlus2" class="caption"></span>
+			</div>
+		</div>
 	</div>
-	<div id="divNextHourPlus1" class="item col-md align-middle">
-		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus1"/>
-		<span id="spnNextHourPlus1" class="caption"></span>
-	</div>
-	<div id="divNextHourPlus2" class="item col-md align-middle">
-		<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus2"/>
-		<span id="spnNextHourPlus2" class="caption"></span>
-	</div>
-</div>
-</div>
 <div id="divDataHolder">
 </div>
 <script language="javascript" type="text/javascript">

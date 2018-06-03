@@ -14,17 +14,17 @@
 	$(document).ready(function() {
 
 		$('.about').hide();
-	
+
 		$('.about_link').click(function(){
 			$('.intro').hide();
 			$('.about').show();
 		});
-		
+
 		$('.intro_link').click(function(){
 			$('.about').hide();
 			$('.intro').show();
 		});
-	
+
 	});
 </script>
 <style type="text/css" media="screen">
@@ -49,7 +49,7 @@
 		font-size:13pt;
 		line-height:150%;
 	}
-	
+
 	body{
 		font-family: 'Libre Franklin', sans-serif;
 		font-weight:100;
@@ -96,7 +96,7 @@
 	.top_box a:hover{
 		border-bottom:1px solid black;
 	}
-	
+
 	.user {
   		display: block;
   		width: 150px;
@@ -106,7 +106,7 @@
 
   		object-fit: cover;
 	}
-	
+
 	@media only screen and (max-width: 48em) {
 	    .top_box, .centered_box {
 			width: auto;
@@ -163,7 +163,13 @@
 </head>
 <body>
 <div id="Intro" class="top_box">
-	<a href="#Intro" title="Intro Page" class="intro_link">Intro</a> <!--| <a href="#About" class="about_link" title="About Me">About Me</a> -->| <a href="http://www.twitter.com/shepherdnick" title="@shepherdnick on Twitter" target="_blank">Twitter</a> | <a href="http://www.instagram.com/shepherdnick" title="@shepherdnick on Instagram"  target="_blank">Instagram</a> | <a href="/unplayed/" target="_blank">Unplayed</a> | <a href="/showdown/index.html?page=list" target="_blank">Showdown</a> | <a href="https://docs.google.com/forms/d/e/1FAIpQLSdddClNCI4tgrCPdu49ci-NAJbjbYX6JUETpcuHlX6jPHnTbQ/viewform?usp=sf_link" title="Contact me via Google Forms"  target="_blank">Contact Me</a>
+	<a href="#Intro" title="Intro Page" class="intro_link">Intro</a>
+	<!--| <a href="#About" class="about_link" title="About Me">About Me</a> -->|
+	<a href="http://www.twitter.com/shepherdnick" title="@shepherdnick on Twitter" target="_blank">Twitter</a> |
+	<a href="http://www.instagram.com/shepherdnick" title="@shepherdnick on Instagram"  target="_blank">Instagram</a> |
+	<a href="/unplayed/" target="_blank">Unplayed</a> |
+	<!-- <a href="/showdown/index.html?page=list" target="_blank">Showdown</a> |-->
+	<a href="https://docs.google.com/forms/d/e/1FAIpQLSdddClNCI4tgrCPdu49ci-NAJbjbYX6JUETpcuHlX6jPHnTbQ/viewform?usp=sf_link" title="Contact me via Google Forms" target="_blank">Contact Me</a>
 </div>
 	<div class="centered_box intro">
 		<div id="divProfilePicHolder" class=""><img src="IMG_1522.jpg" class="user"/></div>
@@ -175,5 +181,5 @@
 		<h2>About Me</h2>
 		<p>I am a computer science graduate from Swansea University and have over 9 years experience as a software developer within the <a href="http://www.quantarc.co.uk" target="_blank">Facilities Management</a> and <a href="https://www.sureviewsystems.com" target="_blank">Physical Security</a> industries.</p>
 	</div>
-</body>	
+</body>
 </html>

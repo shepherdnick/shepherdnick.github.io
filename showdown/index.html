@@ -13,23 +13,71 @@
 	<script type="text/javascript" src="libs/showdown.js"></script>
 	<script type="text/javascript" src="libs/lists.js"></script>
 	<link href="libs/unplayed.css" rel="stylesheet" type="text/css">
-	
+
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('.header').live("click", function(event) {
+		/*$('.header').live("click", function(event) {
 			var target = "#"+event.target.id+"_content";
 			$(target).slideToggle('slow', function() {
 				// Animation complete.
 			});
-		});
-	})
+		});*/
+		//https://www.dropbox.com/s/c2hitodj6pu21e6/list.markdown?dl=0
+		getData("c2hitodj6pu21e6", "list.markdown")
+	});
+
+	function dataCalledBack(nameOfFile, data)
+	{
+		switch(nameOfFile)
+		{
+			case "list.markdown":
+				var list = spanIt(converter.makeHtml(data));
+				$("#list").html(list);
+				break;
+			default:
+				alert("No data found!");
+				break;
+		}
+	}
+
+	function createCORSRequest(method, url){
+		var xhr = new XMLHttpRequest();
+	  	if ("withCredentials" in xhr){
+			// XHR has 'withCredentials' property only if it supports CORS
+			xhr.open(method, url, true);
+		} else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+			xhr = new XDomainRequest();
+			xhr.open(method, url);
+		} else {
+			xhr = null;
+		}
+		return xhr;
+	}
+
+	function getData(shareId, nameOfFile)
+	{
+		var markdownData = null;
+
+		var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/" + shareId + "/" + nameOfFile + "?dl=1" );
+		if ( request ){
+	  		// Define a callback function
+	  		request.onload = function(){
+	  			//markdownData = data;
+	  			dataCalledBack(nameOfFile, request.responseText);
+	  		};
+	  		// Send request
+	  		request.send();
+		}
+
+		return markdownData;
+	}
 	</script>
 </head>
 <body>
 
 <span id="list">
 
-<h2><a href="index.html?page=list">- Get list</a></h2>
+<h2><div id="list" class="content"></div></h2>
 
 </span>
 

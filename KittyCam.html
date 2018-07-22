@@ -33,7 +33,8 @@
             // The result can be accessed through the `m`-variable.
             m.forEach((match, groupIndex) => {
                 console.log(`Found match, group ${groupIndex}: ${match}`);
-                $("#divHandleData").html("<a href='" + match + "'>" + match + "</a>");
+								var replacedIPAddress = match.replace('192.168.1.111', '146.90.83.242');
+                $("#divHandleData").html("<a href='" + replacedIPAddress + "'>" + replacedIPAddress + "</a>");
             });
         }
 		});

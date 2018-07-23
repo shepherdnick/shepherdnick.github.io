@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nick Shepherd</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jon Hurlock">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8" >
+	$(document).ready(function() {
+
+    doCORSRequest({
+				method: this.id === 'post' ? 'POST' : 'GET',
+				url: "http://146.90.83.242/ccm/ccm_play.js?hfrom_handle=1002&hqid=21050006070&dsess=1&dsess_nid=MP9lTHauAXTI3vw591IJlSdCHyZhPg&dsess_sn=1jfiegbqh3z2q&dsetup=1&dsetup_stream=RTP_Unicast&dsetup_trans=1&dsetup_trans_proto=rtmp&dtoken=p0",
+				data: null
+			}, function printResult(result) {
+        const regex = /url:"(.*)"/gm;
+        const str = result;
+        let m;
+
+        while ((m = regex.exec(str)) !== null) {
+            // This is necessary to avoid infinite loops with zero-width matches
+            if (m.index === regex.lastIndex) {
+                regex.lastIndex++;
+            }
+
+            // The result can be accessed through the `m`-variable.
+            m.forEach((match, groupIndex) => {
+                console.log(`Found match, group ${groupIndex}: ${match}`);
+								var replacedIPAddress = match.replace('192.168.1.111', '146.90.83.242');
+                $("#divHandleData").html("<a href='" + replacedIPAddress + "'>" + replacedIPAddress + "</a>");
+            });
+        }
+		});
+
+	});
+
+  var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+	function doCORSRequest(options, printResult) {
+		var x = new XMLHttpRequest();
+		x.open(options.method, cors_api_url + options.url);
+		x.onload = x.onerror = function() {
+			printResult(
+				//options.method + ' ' + options.url + '\n' +
+				//x.status + ' ' + x.statusText + '\n\n' +
+				(x.responseText || '')
+			);
+		};
+
+		if (/^POST/i.test(options.method)) {
+			x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		}
+		x.send(options.data);
+	}
+
+</script>
+</head>
+<body>
+<div id="Intro" class="top_box">
+	<div id="divHandleData"></div>
+</body>
+</html>

@@ -53,7 +53,8 @@
     }
 
     h4 {
-      font-size: 55px;
+      font-size: 14px;
+      margin-bottom: 0px;
     }
 
     p.contact_me,
@@ -97,6 +98,10 @@
       margin-right: default;
       margin-top: 10px;
     }
+
+    .contact_me {
+      display: none;
+    }
   </style>
   <style media="screen" type="text/css">
     body {
@@ -139,6 +144,7 @@
 
     h4 {
       font-size: 18px;
+      margin-bottom: 0px;
     }
 
     p.contact_me,
@@ -159,36 +165,18 @@
       font-style: italic;
     }
 
-    ul {
+    ul.links {
       margin: auto;
       margin-top: 50px;
-      list-style: none;
+      list-style: disc;
       text-align: center;
-    }
-
-    li {
-      display: inline-block;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    ul.links {
       -webkit-padding-start: 0px;
     }
 
-    ul.achievements {
-      margin: default;
-      margin-top: 0px;
-      list-style-type: circle;
-      text-align: left;
-      display: default;
-    }
-
-    ul.achievements li {
-      display: default;
-      margin-left: default;
-      margin-right: default;
-      margin-top: 10px;
+    ul.links li {
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 5px;
     }
 
     a,
@@ -204,7 +192,7 @@
     }
 
     @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
-      body {
+      /* body {
         width: 95%;
       }
       h1,
@@ -239,6 +227,93 @@
         font-size: 20pt;
         font-weight: 400;
         line-height: 120%;
+      } */
+      body {
+        color: #fff;
+        background-color: #1F242A;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 140%;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Segoe UI", Helvetica, Arial, "Lucida Grande", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizelegibility;
+        width: 95%;
+        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 300;
+      }
+
+      h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 50px;
+        font-style: italic;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      h4 {
+        font-size: 16px;
+        margin-bottom: 0px;
+      }
+
+      p.contact_me,
+      p.nav {
+        text-align: center;
+        margin-bottom: -25px;
+        margin-top: 30px;
+      }
+
+      p.employment_dates,
+      p.university_year_and_instiution,
+      p.publication_place,
+      span.talk_title,
+      p.awards_awarding_body,
+      p.comittee_description {
+        margin-top: -10px;
+        margin-bottom: -5px;
+        font-style: italic;
+      }
+
+      ul.links {
+        margin: auto;
+        margin-top: 50px;
+        list-style: disc;
+        text-align: center;
+        -webkit-padding-start: 0px;
+      }
+
+      ul.links li {
+        display: inline-block;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 35px;
+      }
+
+      a,
+      a:link,
+      a:hover,
+      a:visited {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
     }
   </style>
@@ -259,17 +334,27 @@
   <a name="Intent"></a>
   <h2>Intent</h2>
   <p>A Swansea University computer science graduate and software developer, with over nine years experience in the physical security and estates management industries. Competent in full stack development including web based clients, back-end, database management, UI design, mobile, server side architecture, and junior team member staff training.  Enthusiastic, self motivating and hard working with an integrity for products.</p>
-  <p>My career so far has taken me to different places, and not all of them good.  I am looking for a role in a team that uses the correct technology and disciplines to get the job done, and if something is wrong, the team is given the opportunity to put it right.  I am serious about my career and I expect my employment to be taken seriously.</p>
   <a name="Employment"></a>
   <h2>Employment</h2>
-  <!-- SureView -->
-  <h3>Senior Developer, <span class="employer">SureView Systems</span></h3>
+  <!-- UpriseVSI, senior developer -->
+  <h3>Senior Developer, <span class="employer"><a href="https://www.uprisevsi.co.uk/" target="_blank">UpriseVSI</a></span></h3>
+  <p class="employment_dates">May 2018 - Present, Cardiff United Kingdom</p>
+  <p>Working as a senior developer, my responsibilities are to help build and maintain the CMS and booking systems for our numerous customers, as well as developing bespoke web applications.</p>
+  <p>As well as writing code, my responsibilities have been to architect and design systems for our customers, and supervise junior members of the team to build out the products.</p>
+  <h4>Achievements</h4>
+  <ul class="achievements">
+    <li>Integrated 4 different payment gateways for use with the CMS e-commerce products and booking system.</li>
+    <li>Use ASP.NET web forms, MS-SQL server and the Azure cloud platform.</li>
+    <li>Used my experience to help the dvelopment team upgrade their technology.</li>
+  </ul>
+  <!-- SureView, senior developer -->
+  <h3>Senior Developer, <span class="employer"><a href="https://www.sureviewsystems.com/" target="_blank">SureView Systems</a></span></h3>
   <p class="employment_dates">June 2014 - Present, Swansea United Kingdom</p>
   <p>As a senior member of the team, I am heavily involved in the architecting, building and maintaining of the world-class security monitoring software solution “Immix” for customers all across the globe.</p>
   <p>My role is about scoping, architecting, planning and building the software required by our customers to keep their platform feature rich, secure and functional for their operation.</p>
   <p>I am responsible for interpreting the customer's statement of work (or user story) and turning it into a functional part of the platform.</p>
   <p>As part of my role I support junior members of the team to carry out their objectives, as well as developing all multi-functional parts of the platform, including ASP.NET Web Pages, WCF Services, Windows Services, iOS and Android apps.</p>
-  <p>Notable Achievements whilst in post:</p>
+  <h4>Achievements whilst in post:</h4>
   <ul class="achievements">
     <li>Built and maintained Android and iOS apps (single handedly!) enabling viewing of live camera feeds and recorded event footage for our customers.</li>
     <li>Attempted to push responsive design forward which would enable us to release more features more quickly on the mobile platforms, including live guard interactions and notifications.</li>
@@ -278,7 +363,7 @@
     <li>Worked with some large customers within the PSIM marketplace.</li>
   </ul>
   <!-- SureView, developer -->
-  <h3>Developer, <span class="employer">SureView Systems</span></h3>
+  <h3>Developer, <span class="employer"><a href="https://www.sureviewsystems.com" target="_blank">SureView Systems</a></span></h3>
   <p class="employment_dates">October 2010 - June 2014, Swansea United Kingdom</p>
   <p>I started my career in the physical security industry by writing integrations between third party hardware manufacturers and our platform using our internal API. Over a range of different kinds of interfaces, be they C++ libraries, COM objects, Active-X,
     shared DLLs, web APIs and SDKs, it was my responsibility to make the manufacturer's product work seemlessly with our platform offering live and recorded video feeds, audio transmit and receive, relay output triggering, pan, tilt and zoom (PTZ) telemetry
@@ -286,13 +371,26 @@
   <p>I also started to branch out into web development creating a reporting service which was used to provide graphs for use on a dashboard and report documents by pulling live data from the system.</p>
   <p>Another part of my responsibilities as the API product started to mature, was with maintaining and supporting manufacturers that chose to write their own integration for our platform. This gave me a lot of insight into effective communication both through
     written documentation and speaking technically over the phone.</p>
-  <p>Notable Achievements whilst in post:</p>
+  <h4>Achievements whilst in post:</h4>
   <ul class="achievements">
     <li>Created a generic integration that could be used with any live video stream that worked over RTSP/HTTP, saving money and time for the company, manufacturer and customer.</li>
     <li>Instituted using regular expressions for use in alarm decoders, increasing reliability and performance.</li>
     <li>Re-architected our video proxy service (which transcoded video from many different formats to a common format) to be able to multi-cast the same stream to multiple clients, saving massive amounts of resources.</li>
     <li>Created a reporting web service able to be consumed over WCF, providing live data in graphs or reports.</li>
   </ul>
+  <!--Quantarc-->
+  <h3>Developer, <span class="employer"><a href="http://www.quantarc.co.uk/" target="_blank">Quantarc Ltd.</a></h3>
+    <p class="employment_dates">June 2008 - October 2010, Swansea United Kingdom</p>
+    <p>As a graduate I started my career in the Facilities Management industry, working to develop a web-based version of the existing company product, "QuEMIS" - a successful CAFM package with customers across the UK.</p>
+    <p>I gained valuable experience with Java, Hibernate, YUI, ASP.NET, JavaScript and jQuery.</p>
+    <p>As well as working on the new product, I was also responsible for maintaining the existing product. This technology was written in VB6, and used both Microsoft SQL and Oracle as the DBMS. The web part of the product also included both PHP and ASP Classic.<p>
+      <h4>Achievements whilst in post:</h4>
+    <ul class="achievements">
+      <li>Answered support calls and created/solved tickets opened with customers.</li>
+      <li>New product features allowed me to travel to customers and give presentations and lessons in tutorial sessions.</li>
+      <li>Laregely responsible for the 15+ person IT network and hardware infrastructure.</li>
+      <li>Became very familiar and competent with Crystal Reports.</li>
+    </ul>
 
   <a name="Education"></a>
   <h2>Education</h2>

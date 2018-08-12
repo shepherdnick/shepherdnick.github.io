@@ -6,9 +6,10 @@
 	<meta name="apple-mobile-web-app-capable" content="no">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
 	<style>
 	body{
 		font-family: 'Libre Franklin', sans-serif;
@@ -31,10 +32,16 @@
 	#imgNextHourPlus2 {
 		background-color: light-grey;
 	}
+	.temperature {
+		/*font-family: 'Asap', sans-serif;
+		font-weight: bold;*/
+		position: absolute;
+		margin-top: 85px;
+		margin-left: 250px;
+	}
 	div.item {
-		/*display: inline-block;*/
 		text-align: center;
-		/*width: 220px;*/
+		position: relative;
 	}
 	img {
 		width: 200px;
@@ -49,14 +56,17 @@
 	<div id="divWeatherHolder" class="container">
 		<div class="row">
 			<div id="divNextHour" class="item col-sm-6">
+				<div id="divTemperature" class="temperature"></div>
 				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHour"/>
 				<span id="spnNextHour" class="caption"></span>
 			</div>
 			<div id="divNextHourPlus1" class="item col-sm-3 align-middle">
+				<div id="divTemperaturePlus1" class="temperature"></div>
 				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus1"/>
 				<span id="spnNextHourPlus1" class="caption"></span>
 			</div>
 			<div id="divNextHourPlus2" class="item col-sm-3 align-middle">
+				<div id="divTemperaturePlus2" class="temperature"></div>
 				<img src="climacons-master/SVG/Cloud-Refresh.svg" id="imgNextHourPlus2"/>
 				<span id="spnNextHourPlus2" class="caption"></span>
 			</div>
@@ -90,21 +100,25 @@ $(document).ready(function() {
 	function makeWeatherRequest(longitude, latitude) {
 		doCORSRequest({
 				method: this.id === 'post' ? 'POST' : 'GET',
-				url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/" + longitude + "," + latitude,
+				url: "https://api.darksky.net/forecast/56179f71b6d9278dd4a3df7a109f9475/" + longitude + "," + latitude + "?units=si",
 				data: null
 			}, function printResult(result) {
 				var weatherData = JSON.parse(result);
+				console.log(weatherData);
 
 				// Get the next hour icon and summary
 				$("#imgNextHour").attr("src", getIcon(weatherData.hourly.data[0].icon));
+				$("#divTemperature").html(Math.round(weatherData.hourly.data[0].apparentTemperature) + "&#8451;");
 				$("#spnNextHour").html(weatherData.hourly.data[0].summary);
 
 				// Get now + 1 icon and summary
 				$("#imgNextHourPlus1").attr("src", getIcon(weatherData.hourly.data[1].icon));
+				$("#divTemperaturePlus1").html(Math.round(weatherData.hourly.data[1].apparentTemperature) + "&#8451;");
 				$("#spnNextHourPlus1").html(weatherData.hourly.data[1].summary);
 
 				// Get now + 2 icon and summary
 				$("#imgNextHourPlus2").attr("src", getIcon(weatherData.hourly.data[2].icon));
+				$("#divTemperaturePlus2").html(Math.round(weatherData.hourly.data[2].apparentTemperature) + "&#8451;");
 				$("#spnNextHourPlus2").html(weatherData.hourly.data[2].summary);
 		});
 	}

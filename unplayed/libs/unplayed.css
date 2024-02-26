@@ -68,7 +68,7 @@ h1 {
 h2 {
 	margin: 0 0 16px;
 	padding: 16px 0 0;
-	//border-bottom: 4px solid #000080;
+	/*border-bottom: 4px solid #000080;*/
 }
 
 p {
@@ -112,7 +112,7 @@ span+span {
 	}
 
 	.column {
-		width: 370px;
+		width: 100%;
 		clear: both;
 	}
 

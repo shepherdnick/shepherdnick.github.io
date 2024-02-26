@@ -1,5 +1,5 @@
 window.onload = startGui;
-function startGui(){
+function startGui() {
 	// make a new javascript markdown converter
 	converter = new Showdown.converter();
 
@@ -17,8 +17,7 @@ function startGui(){
 	$('input[type=radio].star').rating();
 }
 
-function spanIt(rawHtml)
-{
+function spanIt(rawHtml) {
 	// backup the raw html
 	var changedHtml = rawHtml;
 	// replace the brackets
@@ -28,37 +27,33 @@ function spanIt(rawHtml)
 	return changedHtml;
 }
 
-function starIt(holdingId)
-{
+function starIt(holdingId) {
 	// find the right DOM element
 	var html = "";
 	var selector = "#" + holdingId;
 	var $column = $(selector);
 
 	// for each list item in the DOM element (every game in a column)
-	$column.find('li').each(function (index){
+	$column.find('li').each(function (index) {
 		var htmlBlock = $(this).html();
 		// try to find the star rating e.g. [3/5]
 		var allStarRatings = htmlBlock.match(/\[\d\/\d\]/g);
 
 		// get the number of stars we want to give the game
-        var starRating = /\[(\d)\/(\d)\]/g;
-		if(allStarRatings != null && typeof(allStarRatings) != 'undefined')
-		{
-			if(allStarRatings.length > 0){
+		var starRating = /\[(\d)\/(\d)\]/g;
+		if (allStarRatings != null && typeof (allStarRatings) != 'undefined') {
+			if (allStarRatings.length > 0) {
 				var match = starRating.exec(allStarRatings[0]); //regex match
 
 				html += "<div class='starRatingHolder'>";
 
 				// create the inputs based on the number of stars we want to give
-				for(var i = 1; i <= parseInt(match[2]); i++)
-				{
-					if(i == parseInt(match[1]))
-					{
+				for (var i = 1; i <= parseInt(match[2]); i++) {
+					if (i == parseInt(match[1])) {
 						// this one is checked to show it's where the stars should stop
 						html += "<input name='star-rating-" + holdingId + "-" + index + "' type='radio' class='star' disabled='disabled' checked='checked'\/>";
 					}
-					else{
+					else {
 						html += "<input name='star-rating-" + holdingId + "-" + index + "' type='radio' class='star' disabled='disabled'\/>";
 					}
 				}
@@ -80,10 +75,8 @@ function starIt(holdingId)
 	});
 }
 
-function dataCalledBack(nameOfFile, data)
-{
-	switch(nameOfFile)
-	{
+function dataCalledBack(nameOfFile, data) {
+	switch (nameOfFile) {
 		case "unplayed.markdown":
 			var unplayedGames = spanIt(converter.makeHtml(data));
 			$("#unplayed").html(unplayedGames);
@@ -111,12 +104,12 @@ function dataCalledBack(nameOfFile, data)
 	$('input[type=radio].star').rating();
 }
 
-function createCORSRequest(method, url){
+function createCORSRequest(method, url) {
 	var xhr = new XMLHttpRequest();
-  	if ("withCredentials" in xhr){
+	if ("withCredentials" in xhr) {
 		// XHR has 'withCredentials' property only if it supports CORS
 		xhr.open(method, url, true);
-	} else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+	} else if (typeof XDomainRequest != "undefined") { // if IE use XDR
 		xhr = new XDomainRequest();
 		xhr.open(method, url);
 	} else {
@@ -125,19 +118,18 @@ function createCORSRequest(method, url){
 	return xhr;
 }
 
-function getData(shareId, nameOfFile)
-{
+function getData(shareId, nameOfFile) {
 	var markdownData = null;
 
-	var request = createCORSRequest( "get", "https://dl.dropboxusercontent.com/s/" + shareId + "/" + nameOfFile + "?dl=1" );
-	if ( request ){
-  		// Define a callback function
-  		request.onload = function(){
-  			//markdownData = data;
-  			dataCalledBack(nameOfFile, request.responseText);
-  		};
-  		// Send request
-  		request.send();
+	var request = createCORSRequest("get", "https://dl.dropboxusercontent.com/s/" + shareId + "/" + nameOfFile + "?dl=1");
+	if (request) {
+		// Define a callback function
+		request.onload = function () {
+			//markdownData = data;
+			dataCalledBack(nameOfFile, request.responseText);
+		};
+		// Send request
+		request.send();
 	}
 
 	return markdownData;

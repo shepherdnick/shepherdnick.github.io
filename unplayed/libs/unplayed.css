@@ -1,62 +1,55 @@
-*
-{
+* {
 	margin: 0;
 	padding: 0;
 	border: none;
 }
 
-body
-{
+body {
 	font: 13px/18px sans-serif;
 	font-family: 'Open Sans';
-	color: #000080;/*#999967;*/
+	color: #000080;
+	/*#999967;*/
 	background-color: #eee;
 	padding: 16px;
 }
 
-a
-{
+a {
 	text-decoration: none;
 	font-weight: bold;
 	color: inherit;
 }
 
-a:hover
-{
+a:hover {
 	color: #000080;
 	cursor: pointer;
 	cursor: hand;
 }
 
-.column
-{
+.column {
 	-webkit-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-o-box-sizing: border-box;
-	box-sizing: border-box;	
+	box-sizing: border-box;
 	padding: 16px;
 	width: 25%;
 	float: left;
 }
 
-div.content
-{
+div.content {
 	padding: 0px;
 	width: 100%;
 	clear: left;
 	position: relative;
 }
 
-.starRatingHolder
-{
+.starRatingHolder {
 	padding: 0 0 0 0;
 	min-width: 65px;
 	display: inline-block;
 }
 
-#footer
-{
+#footer {
 	display: none;
 	margin: 16px 16px 0;
 	padding: 16px 0 0;
@@ -66,35 +59,30 @@ div.content
 	width: auto;
 }
 
-h1
-{
+h1 {
 	margin: 0 0 16px;
 	padding: 0 0 16px;
 	border-bottom: 4px solid #000080;
 }
 
-h2
-{
+h2 {
 	margin: 0 0 16px;
 	padding: 16px 0 0;
 	//border-bottom: 4px solid #000080;
 }
 
-p
-{
+p {
 	margin: 0 0 16px;
 }
 
-li
-{
+li {
 	list-style: none;
 	padding: 0 0 0 16px;
 	position: relative;
 	display: block;
 }
 
-li:before
-{
+li:before {
 	display: block;
 	content: '-';
 	font-weight: bold;
@@ -104,14 +92,12 @@ li:before
 	font-size: 24px;
 }
 
-span
-{
+span {
 	color: #999967;
 	font-size: 9px;
 }
 
-span + span
-{
+span+span {
 	font-size: 11px;
 	line-height: 13px;
 	display: block;
@@ -120,23 +106,21 @@ span + span
 }
 
 /* iPhone [portrait + landscape] */
-@media only screen and (max-device-width: 480px)
-{
-	body
-	{
+@media only screen and (max-device-width: 480px) {
+	body {
 		padding: 0;
 	}
-	.column
-	{
+
+	.column {
 		width: 370px;
 		clear: both;
 	}
-	#footer
-	{
+
+	#footer {
 		margin: 16px;
 	}
-	.header
-	{
+
+	.header {
 		clear: both;
 	}
 }

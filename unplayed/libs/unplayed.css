@@ -92,6 +92,15 @@ li:before {
 	font-size: 24px;
 }
 
+.tag {
+	display: inline-block;
+	padding: 0 4px;
+	margin: 0 4px 4px 0;
+	border: 1px solid #101010;
+	font-size: 11px;
+	color: #ffffff;
+}
+
 span {
 	color: #999967;
 	font-size: 9px;

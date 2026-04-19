@@ -21,8 +21,8 @@ function spanIt(rawHtml) {
 	// backup the raw html
 	var changedHtml = rawHtml;
 	// replace the brackets
-	changedHtml = changedHtml.replace(/\#\(/g, "<span class='tag'>");
-	changedHtml = changedHtml.replace(/\#\)/g, "</span>");
+	changedHtml = changedHtml.replace(/\{/g, "<span class='tag'>");
+	changedHtml = changedHtml.replace(/\})/g, "</span>");
 	changedHtml = changedHtml.replace(/\(/g, "<span");
 	changedHtml = changedHtml.replace(/\)/g, "</span>");
 	// send the shiny new html back

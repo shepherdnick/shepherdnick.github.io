@@ -5,3 +5,5 @@ This is a test file
 
 1) This is a numbered list
 2) Second element in the list
+
+How does committing items work with this?
